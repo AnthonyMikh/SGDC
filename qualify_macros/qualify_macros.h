@@ -2,6 +2,11 @@
 #define SGDC_PREFIX SGDC_
 #endif
 
+#ifdef  SGDC_SIMPLE_QUALIFIERS
+	#define Q SGDC_Q
+	#define QP SGDC_QP
+#endif
+
 #define SGDC_Q(f) QUALIFY_WITH_T(f,T)
 #define QUALIFY_WITH_T (f,T) QUALIFY_WITH_T_(f,T)
 #define QUALIFY_WITH_T_(f,T) f ## _ ## T
