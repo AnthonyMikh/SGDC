@@ -1,3 +1,6 @@
+#ifndef _SGDC_QUALIFY_MACROS_H
+#define _SGDC_QUALIFY_MACROS_H 1
+
 #ifndef SGDC_PREFIX
 #define SGDC_PREFIX SGDC_
 #endif
@@ -18,3 +21,5 @@
 #define _SGDC_QP(f) _SGDC_QP_(SGDC_PREFIX, f, T)
 #define _SGDC_QP_(p, f, T) _QUALIFY_WITH_PREFIX_T (p, f, T)
 #define _QUALIFY_WITH_PREFIX_T(p, f, T) _ ## p ## f ## _ ## T
+
+#endif
