@@ -19,59 +19,73 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
 ## More features
 * Of course, you can have more than one typed binary trees. Just define `T` before including header file:
 
-        #define T char
-        #include "sgdc/bintree"
+  ````C
+  #define T char
+  #include "sgdc/bintree"
 
-        #define T float
-        #include "sgdc/bintree"
+  #define T float
+  #include "sgdc/bintree"
 
-        #define T long
-        #include "sgdc/bintree"
-        ...
-        /* working with trees of chars, floats and longs*/
+  #define T long
+  #include "sgdc/bintree"
+  ...
+  /* working with trees of chars, floats and longs*/
+  ````
 
 * You can also not to define any T. In this case data structure will hold `int` values:
 
-        #undef T
-        #include "sgdc/bintree"
-        ...
-        /* works with "SGDC_bintree_create_int" etc. */
+  ````C
+  #undef T
+  #include "sgdc/bintree"
+  ...
+  /* works with "SGDC_bintree_create_int" etc. */
+  ````
 
 * In case you find constant `SGDC_` too noisy, you can change it:
 
-        #define SGDC_PREFIX S
-        #include "sgdc/bintree"
-        ...
-        /* now work with "S_bintree_create_int" */
+  ````C
+  #define SGDC_PREFIX S
+  #include "sgdc/bintree"
+  ...
+  /* now work with "S_bintree_create_int" */
+  ````
 
     Or even remove it completely:
 
-        #define SGDC_PREFIX
-        /* now functions have no prefix*/
+  ````C
+  #define SGDC_PREFIX
+  /* now functions have no prefix*/
+  ````
 
 * If you find typing `bintree_char` too tiring (esspecially if you have only one instance of structure), you can cut the corners:
 
-        #define SGDC_SIMPLE_DATATYPE
-        #define T char
-        #include "sgdc/bintree"
-        ...
-        //now you're able to write stuff like this:
-        data_node_t* tree = SGCD_bintree_create_char('☺');
+  ````C
+  #define SGDC_SIMPLE_DATATYPE
+  #define T char
+  #include "sgdc/bintree"
+  ...
+  //now you're able to write stuff like this:
+  data_node_t* tree = SGCD_bintree_create_char('☺');
+  ````
 
     **WARNING!!! Use this only in case you have only one type or you would get name collision**
 * You can ease typing long names using qualify macros:
 
-        #define T char
-        #include "sgdc/bintree"
-        ...
-        SGDC_QP(bintree)* tree = SGDC_QP(bintree_create)('A');
+  ````C
+  #define T char
+  #include "sgdc/bintree"
+  ...
+  SGDC_QP(bintree)* tree = SGDC_QP(bintree_create)('A');
+  ````
 
     You can type even less if you enable simple qualifiers:
-
-        #define SGDC_SIMPLE_QUALIFIERS
-        #include "sgdc/bintree"
-        ...
-        QP(bintree)* tree = QP(bintree_create)('A');
+    
+  ````C
+  #define SGDC_SIMPLE_QUALIFIERS
+  #include "sgdc/bintree"
+  ...
+  QP(bintree)* tree = QP(bintree_create)('A');
+  ````
 
 # Known limitations
 Since name qualifying is done via macros, you can't use it names containg `*` or spaces. Use `typedef` in order to solve this issue.
