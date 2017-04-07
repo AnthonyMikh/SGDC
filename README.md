@@ -88,4 +88,4 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
   ````
 
 # Known limitations
-Since name qualifying is done via macros, you can't use it names containg `*` or spaces. Use `typedef` in order to solve this issue.
+Since name qualifying is done via macros, you can't use names containg `*` or spaces. Use `typedef` in order to solve this issue.
