@@ -67,6 +67,8 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
   //now you're able to write stuff like this:
   data_node_t* tree = SGCD_bintree_create_char('☺');
   ````
+  
+  Note that if you try to use this option more than once, you will get an error during compilation.
 
 * You can ease typing long names using qualify macros:
 
