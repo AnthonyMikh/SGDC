@@ -25,6 +25,10 @@ typedef struct _SGDC_QP(bintree){
 
 data_node_t* SGDC_QP(bintree_create) (T init) {
 	data_node_t* newnode = malloc(sizeof *newnode);
+	if (newnode == NULL) {
+		return NULL;
+	}
+	
 	newnode->top   = NULL;
 	newnode->left  = NULL;
 	newnode->right = NULL;
