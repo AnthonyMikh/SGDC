@@ -5,7 +5,7 @@ SGDC stands for "student's general data collection". SGDC is a collection of abs
 Suppose you want to have binary tree holding `double`s. In order to do it, put `sgdc` directory along with your sources and write in the beginning od code file:
 ```C
 #define T double
-#include "sgdc/bintree.h"
+#include "sgdc/bintree/bintree.h"
 ...
 /* code stuff */
 ```
@@ -21,13 +21,13 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
 
   ````C
   #define T char
-  #include "sgdc/bintree"
+  #include "sgdc/bintree/bintree.h"
 
   #define T float
-  #include "sgdc/bintree"
+  #include "sgdc/bintree/bintree.h"
 
   #define T long
-  #include "sgdc/bintree"
+  #include "sgdc/bintree/bintree.h"
   ...
   /* working with trees of chars, floats and longs*/
   ````
@@ -36,7 +36,7 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
 
   ````C
   #undef T
-  #include "sgdc/bintree"
+  #include "sgdc/bintree/bintree.h"
   ...
   /* works with "SGDC_bintree_create_int" etc. */
   ````
@@ -45,7 +45,7 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
 
   ````C
   #define SGDC_PREFIX S
-  #include "sgdc/bintree"
+  #include "sgdc/bintree/bintree.h"
   ...
   /* now work with "S_bintree_create_int" */
   ````
@@ -62,7 +62,7 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
   ````C
   #define SGDC_SIMPLE_DATATYPE
   #define T char
-  #include "sgdc/bintree"
+  #include "sgdc/bintree/bintree.h"
   ...
   //now you're able to write stuff like this:
   data_node_t* tree = SGCD_bintree_create_char('☺');
@@ -72,7 +72,7 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
 
   ````C
   #define T char
-  #include "sgdc/bintree"
+  #include "sgdc/bintree/bintree.h"
   ...
   SGDC_QP(bintree)* tree = SGDC_QP(bintree_create)('A');
   ````
@@ -81,7 +81,7 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
     
   ````C
   #define SGDC_SIMPLE_QUALIFIERS
-  #include "sgdc/bintree"
+  #include "sgdc/bintree/bintree.h"
   ...
   QP(bintree)* tree = QP(bintree_create)('A');
   ````
