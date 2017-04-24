@@ -16,8 +16,9 @@
 #include <malloc.h>
 #endif
 
-typedef struct _SGDC_QP( __name__ ){
+typedef struct _SGDC_QP( __name__ ) {
 	/* internals */
+	T value;
 } data_node_t;
 
 /* code goes here */
