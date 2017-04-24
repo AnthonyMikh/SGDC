@@ -1,13 +1,16 @@
+#ifndef SGDC_SIMPLE_DATATYPE
+	#define data_node_t SGDC_QP(bintree)
+#else
+	#ifdef _SGDC_BINTREE_H /* simple datatype enabled but header is included more than once*/
+	#error SGDC: cannot use SGDC_SIMPLE_DATATYPE on bintree more than once
+#endif
+
 #ifndef _SGDC_BINTREE_H
 #define _SGDC_BINTREE_H 1
 #endif
 
 #include "../qualify_macros/qualify_macros.h"
 #include "../default_type/default_type_begin.h"
-
-#ifndef SGDC_SIMPLE_DATATYPE
-#define data_node_t SGDC_Q(bintree)
-#endif
 
 #ifndef _MALLOC_H
 #include <malloc.h>
