@@ -55,4 +55,14 @@ void SGDC_QP(slist_delnext) (data_node_t* node) {
 	return;
 }
 
+void SGDC_QP(slist_deltail) (data_node_t* node) {
+	if (node == NULL)
+		return;
+	
+	while(node->next != NULL) {
+		SGDC_QP(slist_delnext) (node->next);
+	}
+	return;
+}
+
 #include "../default_type/default_type_end.h"
