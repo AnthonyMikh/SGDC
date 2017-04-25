@@ -65,4 +65,13 @@ void SGDC_QP(slist_deltail) (data_node_t* node) {
 	return;
 }
 
+void SGDC_QP(slist_free) (data_node_t* node) {
+	if (node == NULL)
+		return;
+	
+	SGDC_QP(slist_deltail) (node);
+	free(node);
+	return;
+}
+
 #include "../default_type/default_type_end.h"
