@@ -60,7 +60,7 @@ void SGDC_QP(slist_deltail) (data_node_t* node) {
 		return;
 	
 	while(node->next != NULL) {
-		SGDC_QP(slist_delnext) (node->next);
+		SGDC_QP(slist_delnext) (node);
 	}
 	return;
 }
