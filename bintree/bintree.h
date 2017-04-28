@@ -76,4 +76,8 @@ void SGDC_QP(bintree_free) (data_node_t* a) {
     return;
 }
 
+#ifndef SGDC_SIMPLE_DATATYPE
+	#undef data_node_t
+#endif
+
 #include "../default_type/default_type_end.h"
