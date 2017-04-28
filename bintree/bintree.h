@@ -1,3 +1,5 @@
+#include "../qualify_macros/qualify_macros.h"
+
 #ifndef SGDC_SIMPLE_DATATYPE
 	#define data_node_t SGDC_QP(bintree)
 #else
@@ -10,7 +12,6 @@
 #define _SGDC_BINTREE_H 1
 #endif
 
-#include "../qualify_macros/qualify_macros.h"
 #include "../default_type/default_type_begin.h"
 
 #ifndef _MALLOC_H
