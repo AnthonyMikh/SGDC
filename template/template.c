@@ -3,6 +3,7 @@
 #else
 	#ifdef _SGDC_NAME_H /* simple datatype enabled but header is included more than once*/
 	#error SGDC: cannot use SGDC_SIMPLE_DATATYPE on same data structure more than once
+	#endif
 #endif
 
 #ifndef _SGDC_NAME_H
