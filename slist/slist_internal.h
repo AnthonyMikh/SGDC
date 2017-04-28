@@ -1,6 +1,6 @@
 
 #ifndef SGDC_SIMPLE_DATATYPE
-	#define data_node_t SGDC_QP(slist)
+	#define data_node_t SGDC_QP(slist_node)
 #else
 	#ifdef _SGDC_SLIST_H /* simple datatype enabled but header is included more than once*/
 	#error SGDC: cannot use SGDC_SIMPLE_DATATYPE on single-linked list more than once
