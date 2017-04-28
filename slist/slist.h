@@ -1,3 +1,4 @@
+#include "../qualify_macros/qualify_macros.h"
 
 #ifndef SGDC_SIMPLE_DATATYPE
 	#define data_node_t SGDC_QP(slist)
@@ -11,7 +12,6 @@
 #define _SGDC_SLIST_H 1
 #endif
 
-#include "../qualify_macros/qualify_macros.h"
 #include "../default_type/default_type_begin.h"
 
 #ifndef _MALLOC_H
@@ -74,5 +74,9 @@ void SGDC_QP(slist_free) (data_node_t* node) {
 	free(node);
 	return;
 }
+
+#ifndef SGDC_SIMPLE_DATATYPE
+	#undef data_node_t
+#endif
 
 #include "../default_type/default_type_end.h"

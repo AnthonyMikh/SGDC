@@ -1,3 +1,5 @@
+#include "../qualify_macros/qualify_macros.h"
+
 #ifndef SGDC_SIMPLE_DATATYPE
 	#define data_node_t SGDC_QP( __name__ )
 #else
@@ -10,7 +12,6 @@
 #define _SGDC_NAME_H 1
 #endif
 
-#include "../qualify_macros/qualify_macros.h"
 #include "../default_type/default_type_begin.h"
 
 #ifndef _MALLOC_H
@@ -23,5 +24,9 @@ typedef struct _SGDC_QP( __name__ ) {
 } data_node_t;
 
 /* code goes here */
+
+#ifndef SGDC_SIMPLE_DATATYPE
+	#undef data_node_t
+#endif
 
 #include "../default_type/default_type_end.h"
