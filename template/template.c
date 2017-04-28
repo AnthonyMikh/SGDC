@@ -25,4 +25,8 @@ typedef struct _SGDC_QP( __name__ ) {
 
 /* code goes here */
 
+#ifndef SGDC_SIMPLE_DATATYPE
+	#undef data_node_t
+#endif
+
 #include "../default_type/default_type_end.h"
