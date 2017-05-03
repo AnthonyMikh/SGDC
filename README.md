@@ -2,7 +2,7 @@
 SGDC stands for "student's general data collection". SGDC is a collection of abstract data structures written in pure C. Unlike many other similar libraries, it doesn't mess around casting from and to `void*`. SGDC also isn't built upon `typedef`s so it lets you have several SGDC data structures in one program holding values of different types.
 
 # Usage
-Suppose you want to have binary tree holding `double`s. In order to do it, put `sgdc` directory along with your sources and write in the beginning od code file:
+Suppose you want to have binary tree holding `double`s. In order to do it, put `sgdc` directory along with your sources and write in the beginning of code file:
 ```C
 #define T double
 #include "sgdc/bintree/bintree.h"
@@ -14,7 +14,7 @@ Now you're able to do things like this:
 SGDC_bintree_double* mytree = SGDC_bintree_create_double(0.5d);
 SGDC_bintree_insertr_double(mytree, 0.888d);
 ```
-As you can see, T defines the type of data stucture. All SGDC functions begin with `SGDC_` and tailed by underscore followed by type name in order to escape name collisions.
+As you can see, T defines the type of data structure. All SGDC functions begin with `SGDC_` and tailed by underscore followed by type name in order to escape name collisions.
 
 ## More features
 * Of course, you can have more than one typed binary trees. Just define `T` before including header file:
@@ -57,7 +57,7 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
   /* now functions have no prefix*/
   ````
 
-* If you find typing `bintree_char` too tiring (esspecially if you have only one instance of structure), you can cut the corners:
+* If you find typing `bintree_char` too tiring (especially if you have only one instance of structure), you can cut the corners:
 
   ````C
   #define SGDC_SIMPLE_DATATYPE
