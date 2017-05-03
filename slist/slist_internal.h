@@ -22,7 +22,7 @@ typedef struct _SGDC_QP(slist) {
 	T value;
 } data_node_t;
 
-data_node_t* SGDC_QP(slist_create) (T init) {
+data_node_t* SGDC_QP(slist_node_create) (T init) {
 	data_node_t* newnode = malloc(sizeof *newnode);
 	if (newnode == NULL) {
 		return NULL;
