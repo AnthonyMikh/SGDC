@@ -26,6 +26,23 @@ typedef struct _SGCD_QP(slist_iter) {
 	data_t* head;
 }
 
+data_t SGDC_QP(slist_init) (T init) {
+	data_node_t* newnode = malloc(sizeof *newnode);
+	if (newnode == NULL) {
+		return NULL;
+	}
+	
+	newnode->value = init;
+	newnode->next  = NULL;
+	
+	data_t newlist;
+	newlist.head = newnode;
+	newlist.last = newnode;
+	newlist.size = 1;
+	
+	return newlist;
+}
+
 /* code goes here */
 
 #include "../default_type/default_type_end.h"
