@@ -45,6 +45,8 @@ _SGDC_was_modified SGDC_QP(slist_node_insert) (data_node_t* node, T insertvalue)
 }
 
 _SGDC_was_modified SGDC_QP(slist_node_delnext) (data_node_t* node) {
+	if (node == NULL)
+		return 0;
 	if (node->next == NULL)
 		return 0;
 
