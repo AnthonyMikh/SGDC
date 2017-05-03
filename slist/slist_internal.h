@@ -62,11 +62,10 @@ void SGDC_QP(slist_node_deltail) (data_node_t* node) {
 	return;
 }
 
-void SGDC_QP(slist_free) (data_node_t* node) {
+void SGDC_QP(slist_node_free) (data_node_t* node) {
 	if (node == NULL)
 		return;
 	
-	SGDC_QP(slist_deltail) (node);
 	free(node);
 	return;
 }
