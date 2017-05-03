@@ -10,9 +10,6 @@
 #define _SGDC_SLIST_NODE_H 1
 #endif
 
-#include "../qualify_macros/qualify_macros.h"
-#include "../default_type/default_type_begin.h"
-
 #ifndef _MALLOC_H
 #include <malloc.h>
 #endif
@@ -73,5 +70,3 @@ void SGDC_QP(slist_free) (data_node_t* node) {
 	free(node);
 	return;
 }
-
-#include "../default_type/default_type_end.h"
