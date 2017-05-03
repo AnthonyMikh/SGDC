@@ -1,4 +1,3 @@
-
 #ifndef SGDC_SIMPLE_DATATYPE
 	#define data_node_t SGDC_QP(slist_node)
 #else
@@ -34,7 +33,7 @@ data_node_t* SGDC_QP(slist_create) (T init) {
 	return newnode;
 }
 
-void SGDC_QP(slist_insert) (data_node_t* node, T insertvalue) {
+void SGDC_QP(slist_node_insert) (data_node_t* node, T insertvalue) {
 	data_node_t* newnode = malloc(sizeof *newnode);
 	if (newnode == NULL) {
 		return;
@@ -46,7 +45,7 @@ void SGDC_QP(slist_insert) (data_node_t* node, T insertvalue) {
 	return;
 }
 
-void SGDC_QP(slist_delnext) (data_node_t* node) {
+void SGDC_QP(slist_node_delnext) (data_node_t* node) {
 	if (node->next == NULL)
 		return;
 
@@ -56,7 +55,7 @@ void SGDC_QP(slist_delnext) (data_node_t* node) {
 	return;
 }
 
-void SGDC_QP(slist_deltail) (data_node_t* node) {
+void SGDC_QP(slist_node_deltail) (data_node_t* node) {
 	if (node == NULL)
 		return;
 	
