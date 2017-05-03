@@ -14,8 +14,8 @@
 #include <malloc.h>
 #endif
 
-typedef struct _SGDC_QP(slist) {
-	struct _SGDC_QP(slist)* next;
+typedef struct _SGDC_QP(slist_node) {
+	struct _SGDC_QP(slist_node)* next;
 	T value;
 } data_node_t;
 
