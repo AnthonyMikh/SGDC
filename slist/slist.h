@@ -39,11 +39,33 @@ data_t SGDC_QP(slist_create) (T init) {
 	return newlist;
 }
 
+void SGDC_QP(slist_append) (data_t list, T tailvalue) {
+	data_node_t* newnode = SGDC_QP(slist_node_insert) (list.last, tailvalue);
+	if (newnode == NULL) {
+		return;
+	}
+	list.last = newnode;
+	++list.size;
+	return;
+}
+
 data_iter_t SGDC_QP(slist_it_make) (data_t list) {
 	data_iter_t newiter;
 	newiter.current = list.head;
 	newiter.head = list;
 	return newiter;
+}
+
+void SGDC_QP(slist_it_gonext) (data_iter_t* iter) {
+	if (iter->current == NULL)
+		return;
+	iter->current = iter->current.next;
+	return;
+}
+
+void SGDC_QP(slist_it_rewind) (data_iter_t* iter) {
+	iter->current = iter->head.head;
+	return;
 }
 
 #include "../default_type/default_type_end.h"
