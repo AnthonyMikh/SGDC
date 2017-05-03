@@ -19,6 +19,8 @@ typedef struct _SGDC_QP(slist_node) {
 	T value;
 } data_node_t;
 
+typedef char _SGDC_was_modified;
+
 data_node_t* SGDC_QP(slist_node_create) (T init) {
 	data_node_t* newnode = malloc(sizeof *newnode);
 	if (newnode == NULL) {
@@ -30,42 +32,42 @@ data_node_t* SGDC_QP(slist_node_create) (T init) {
 	return newnode;
 }
 
-void SGDC_QP(slist_node_insert) (data_node_t* node, T insertvalue) {
+_SGDC_was_modified SGDC_QP(slist_node_insert) (data_node_t* node, T insertvalue) {
 	data_node_t* newnode = malloc(sizeof *newnode);
 	if (newnode == NULL) {
-		return;
+		return 0;
 	}
 	
 	newnode->next  = node->next;
 	newnode->value = insertvalue;
 	node->next     = newnode;
-	return;
+	return 1;
 }
 
-void SGDC_QP(slist_node_delnext) (data_node_t* node) {
+_SGDC_was_modified SGDC_QP(slist_node_delnext) (data_node_t* node) {
 	if (node->next == NULL)
-		return;
+		return 0;
 
 	data_node_t* nextnode = node->next;
 	node->next = nextnode->next;
 	free(nextnode);
-	return;
+	return 1;
 }
 
-void SGDC_QP(slist_node_deltail) (data_node_t* node) {
+_SGDC_was_modified SGDC_QP(slist_node_deltail) (data_node_t* node) {
 	if (node == NULL)
-		return;
+		return 0;
 	
 	while(node->next != NULL) {
 		SGDC_QP(slist_delnext) (node);
 	}
-	return;
+	return 1;
 }
 
-void SGDC_QP(slist_node_free) (data_node_t* node) {
+_SGDC_was_modified SGDC_QP(slist_node_free) (data_node_t* node) {
 	if (node == NULL)
-		return;
+		return 0;
 	
 	free(node);
-	return;
+	return 1;
 }
