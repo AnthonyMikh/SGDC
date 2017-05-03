@@ -56,16 +56,6 @@ _SGDC_was_modified SGDC_QP(slist_node_delnext) (data_node_t* node) {
 	return 1;
 }
 
-_SGDC_was_modified SGDC_QP(slist_node_deltail) (data_node_t* node) {
-	if (node == NULL)
-		return 0;
-	
-	while(node->next != NULL) {
-		SGDC_QP(slist_delnext) (node);
-	}
-	return 1;
-}
-
 _SGDC_was_modified SGDC_QP(slist_node_free) (data_node_t* node) {
 	if (node == NULL)
 		return 0;
