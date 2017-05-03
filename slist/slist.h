@@ -6,6 +6,8 @@
 	#endif
 #endif
 
+#define data_iter_t SGDC_QP(slist_iter)
+
 #ifndef _SGDC_SLIST_H
 #define _SGDC_SLIST_H 1
 #endif
@@ -24,7 +26,7 @@ typedef struct _SGDC_QP(slist) {
 typedef struct _SGCD_QP(slist_iter) {
 	data_node_t* current;
 	data_t* head;
-}
+} data_iter_t;
 
 data_t SGDC_QP(slist_create) (T init) {
 	data_node_t* newnode = SGDC_QP(slist_node_create) (init);
@@ -37,6 +39,11 @@ data_t SGDC_QP(slist_create) (T init) {
 	return newlist;
 }
 
-/* code goes here */
+data_iter_t SGDC_QP(slist_it_make) (data_t list) {
+	data_iter_t newiter;
+	newiter.current = list.head;
+	newiter.head = list;
+	return newiter;
+}
 
 #include "../default_type/default_type_end.h"
