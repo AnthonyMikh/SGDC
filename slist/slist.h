@@ -39,13 +39,18 @@ data_t SGDC_QP(slist_create) (T init) {
 	return newlist;
 }
 
-void SGDC_QP(slist_append) (data_t list, T tailvalue) {
-	data_node_t* newnode = SGDC_QP(slist_node_insert) (list.last, tailvalue);
-	if (newnode == NULL) {
+void SGDC_QP(slist_append) (data_t* list, T tailvalue) {
+	if (list == NULL)
+		return;
+	if (list->last == NULL)
+		return;
+	
+	size_t inscount = SGDC_QP(slist_node_insert) (list->last, tailvalue);
+	if (inscount == 0) { //no nodes actually inserted
 		return;
 	}
-	list.last = newnode;
-	++list.size;
+	list->last = newnode;
+	++(list->size);
 	return;
 }
 
@@ -76,7 +81,7 @@ void SGDC_QP(slist_it_insert) (data_iter_t iter, T insertvalue) {
 	if (iter.current == NULL)
 		return;
 	data_node_t oldnext = iter.current->next;
-	if (SGDC_QP(slist_node_insert) (iter.current, T insertvalue)) { //if node was succesfully inserted
+	if (0 != SGDC_QP(slist_node_insert) (iter.current, T insertvalue)) { //if node was succesfully inserted
 		++(iter.head.size);
 		if (oldnext == NULL) //iterator was at last node
 			iter.head.last = iter.current->next;
@@ -85,7 +90,7 @@ void SGDC_QP(slist_it_insert) (data_iter_t iter, T insertvalue) {
 }
 
 void SGDC_QP(slist_it_delnext) (data_iter_t iter) {
-	if (SGDC_QP(slist_node_delnext) (iter.current)) { //if node was succesfully deleted
+	if (0 != SGDC_QP(slist_node_delnext) (iter.current)) { //if node was succesfully deleted
 		--(iter.head.size);
 		if (iter.current->next == NULL) //iterator is on last node
 			iter.head.last = iter.current;
