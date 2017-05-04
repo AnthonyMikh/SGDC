@@ -93,7 +93,7 @@ void SGDC_QP(slist_it_insert) (data_iter_t iter, T insertvalue) {
 	if (iter.current == NULL)
 		return;
 	data_node_t* oldnext = iter.current->next;
-	if (0 != SGDC_QP(slist_node_insert) (iter.current, T insertvalue)) { //if node was succesfully inserted
+	if (0 != SGDC_QP(slist_node_insert) (iter.current, insertvalue)) { //if node was succesfully inserted
 		++(iter.head->size);
 		if (oldnext == NULL) //iterator was at last node
 			iter.head->last = iter.current->next;
