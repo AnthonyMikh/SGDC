@@ -54,6 +54,18 @@ void SGDC_QP(slist_append) (data_t* list, T tailvalue) {
 	return;
 }
 
+T SGDC_QP(slist_pophead) (data_t* list, T default_value) {
+	if (list == NULL)
+		return default_value;
+	if (list->size == 0)
+		return 0;
+	data_node_t* oldfirst = list->head;
+	T headvalue = oldfirst->value;
+	list->head = list->head->next;
+	SGDC_QP(slist_node_free) (oldfirst);
+	return headvalue;
+}
+
 data_iter_t SGDC_QP(slist_it_make) (data_t list) {
 	data_iter_t newiter;
 	newiter.current = list.head;
