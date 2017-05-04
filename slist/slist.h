@@ -66,6 +66,18 @@ T SGDC_QP(slist_pophead) (data_t* list, T default_value) {
 	return headvalue;
 }
 
+void SGDC_QP(slist_free) (data_t* list) {
+	data_node_t* to_delete;
+	while (list->head != NULL) {
+		to_delete = list->head;
+		list->head = list->head->next;
+		SGDC_QP(slist_node_free) (to_delete);
+	}
+	list->last = NULL;
+	list->size = 0;
+	return;
+}
+
 data_iter_t SGDC_QP(slist_it_make) (data_t* list) {
 	data_iter_t newiter;
 	newiter.current = list->head;
