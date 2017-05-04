@@ -49,7 +49,7 @@ void SGDC_QP(slist_append) (data_t* list, T tailvalue) {
 	if (inscount == 0) { //no nodes actually inserted
 		return;
 	}
-	list->last = newnode;
+	list->last = list->last->next;
 	++(list->size);
 	return;
 }
