@@ -17,12 +17,36 @@
 #include <malloc.h>
 #endif
 
+#if __STDC_VERSION__ >= 199901L /* if compiler supports C99 standart*/
+	#include <stdbool> /* use built-in boolean type */
+#else
+	typedef enum {false, true} bool; /* emulate bool with enum*/
+#endif
+
 typedef struct _SGDC_QP(bintree_node){
     struct _SGDC_QP(bintree_node)* top;
     struct _SGDC_QP(bintree_node)* left;
     struct _SGDC_QP(bintree_node)* right;
     T  value;
 } data_node_t;
+
+bool SGDC_QP(bintree_node_isright) (data_node_t* node) {
+	if (node == NULL || node->top == NULL)
+		return false;
+	if (node->top->right == node)
+		return true;
+	else
+		return false;
+}
+
+bool SGDC_QP(bintree_node_isleft) (data_node_t* node) {
+	if (node == NULL || node->top == NULL)
+		return false;
+	if (node->top->left == node)
+		return true;
+	else
+		return false;
+}
 
 data_node_t* SGDC_QP(bintree_node_create) (T init) {
 	data_node_t* newnode = malloc(sizeof *newnode);
@@ -37,7 +61,7 @@ data_node_t* SGDC_QP(bintree_node_create) (T init) {
 	return newnode;
 }
 
-// it will be possibly removed
+/* it will be possibly removed */
 static void SGDC_QP(bintree_node_cut) (data_node_t* node) {
 	if (node == NULL) return;
 	if (node->top == NULL) return;
@@ -116,9 +140,9 @@ void SGDC_QP(bintree_node_insleft) (data_node_t* node, T insvalue) {
 }
 
 void SGDC_QP(bintree_node_free) (data_node_t* node) {
-    if (node == NULL) {
-        return;
-    }
+	if (node == NULL) {
+		return;
+	}
 
 	SGDC_QP(bintree_node_cut) (node);
 	SGDC_QP(bintree_node_free) (node->right);
