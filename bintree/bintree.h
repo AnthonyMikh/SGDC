@@ -37,18 +37,19 @@ data_node_t* SGDC_QP(bintree_create) (T init) {
 	return newnode;
 }
 
-static void SGDC_QP(bintree_cut) (data_node_t* a) {
-	if (a == NULL) return;
-	if (a->top == NULL) return;
+static void SGDC_QP(bintree_cut) (data_node_t* node) {
+	if (node == NULL) return;
+	if (node->top == NULL) return;
 
-	data_node_t* atop = a->top;
-	if (atop->left == a) {
-		atop->left == NULL;
+	data_node_t* supernode = node->top;
+	if (supernode->left == node) {
+		supernode->left == NULL;
 	} else {
-		atop->right == NULL;
+		supernode->right == NULL;
 	}
 
-	a->top = NULL;
+	node->top = NULL;
+	return;
 }
 
 data_node_t* SGDC_QP(bintree_getroot) (data_node_t* a) {
