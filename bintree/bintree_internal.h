@@ -47,6 +47,15 @@ bool SGDC_QP(bintree_node_isleft) (data_node_t* node) {
 		return false;
 }
 
+_SGDC_bintree_node_type SGDC_QP(bintree_node_type) (data_node_t* node) {
+	if (node == NULL || node->top == NULL)
+		return _SGDC_bintree_node_root;
+	if (node->top->left == node)
+		return _SGDC_bintree_node_left;
+	else
+		return _SGDC_bintree_node_right;
+}
+
 data_node_t* SGDC_QP(bintree_node_create) (T init) {
 	data_node_t* newnode = malloc(sizeof *newnode);
 	if (newnode == NULL) {
