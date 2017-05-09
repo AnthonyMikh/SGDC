@@ -83,6 +83,36 @@ data_node_t* SGDC_QP(bintree_leftest) (data_node_t* node) {
 	return leftest;
 }
 
+void SGDC_QP(bintree_insright) (data_node_t* node, T insvalue) {
+	if (node == NULL)
+		return;
+	data_node_t* inspoint = rightest(node);
+	data_node_t* newnode  = malloc(sizeof *newnode);
+	if (newnode == NULL)
+		return;
+	inspoint->right = newnode;
+	newnode->top    = inspoint;
+	newnode->left   = NULL;
+	newnode->right  = NULL;
+	newnode->value  = insvalue;
+	return;
+}
+
+void SGDC_QP(bintree_insleft) (data_node_t* node, T insvalue) {
+	if (node == NULL)
+		return;
+	data_node_t* inspoint = leftest(node);
+	data_node_t* newnode  = malloc(sizeof *newnode);
+	if (newnode == NULL)
+		return;
+	inspoint->left = newnode;
+	newnode->top    = inspoint;
+	newnode->left   = NULL;
+	newnode->right  = NULL;
+	newnode->value  = insvalue;
+	return;
+}
+
 void SGDC_QP(bintree_free) (data_node_t* a) {
     if (a == NULL) {
         return;
