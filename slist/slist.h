@@ -58,7 +58,7 @@ T SGDC_QP(slist_pophead) (data_t* list, T default_value) {
 	if (list == NULL)
 		return default_value;
 	if (list->size == 0)
-		return 0;
+		return default_value;
 	data_node_t* oldfirst = list->head;
 	T headvalue = oldfirst->value;
 	list->head = list->head->next;
