@@ -1,13 +1,13 @@
 #ifndef SGDC_SIMPLE_DATATYPE
 	#define data_node_t SGDC_QP(bintree)
 #else
-	#ifdef _SGDC_BINTREE_H /* simple datatype enabled but header is included more than once*/
+	#ifdef _SGDC_BINTREE_NODE_H /* simple datatype enabled but header is included more than once*/
 	#error SGDC: cannot use SGDC_SIMPLE_DATATYPE on bintree more than once
 	#endif
 #endif
 
-#ifndef _SGDC_BINTREE_H
-#define _SGDC_BINTREE_H 1
+#ifndef _SGDC_BINTREE_NODE_H
+#define _SGDC_BINTREE_NODE_H 1
 #endif
 
 #include "../qualify_macros/qualify_macros.h"
@@ -17,14 +17,14 @@
 #include <malloc.h>
 #endif
 
-typedef struct _SGDC_QP(bintree){
-    struct _SGDC_QP(bintree)* top;
-    struct _SGDC_QP(bintree)* left;
-    struct _SGDC_QP(bintree)* right;
+typedef struct _SGDC_QP(bintree_node){
+    struct _SGDC_QP(bintree_node)* top;
+    struct _SGDC_QP(bintree_node)* left;
+    struct _SGDC_QP(bintree_node)* right;
     T  value;
 } data_node_t;
 
-data_node_t* SGDC_QP(bintree_create) (T init) {
+data_node_t* SGDC_QP(bintree_node_create) (T init) {
 	data_node_t* newnode = malloc(sizeof *newnode);
 	if (newnode == NULL) {
 		return NULL;
@@ -37,7 +37,8 @@ data_node_t* SGDC_QP(bintree_create) (T init) {
 	return newnode;
 }
 
-static void SGDC_QP(bintree_cut) (data_node_t* node) {
+// it will be possibly removed
+static void SGDC_QP(bintree_node_cut) (data_node_t* node) {
 	if (node == NULL) return;
 	if (node->top == NULL) return;
 
@@ -52,19 +53,19 @@ static void SGDC_QP(bintree_cut) (data_node_t* node) {
 	return;
 }
 
-data_node_t* SGDC_QP(bintree_getroot) (data_node_t* a) {
-	if (a == NULL) return NULL;
+data_node_t* SGDC_QP(bintree_node_getroot) (data_node_t* node) {
+	if (node == NULL) return NULL;
 
-	data_node_t* _a = a;
+	data_node_t* root = node;
 
-	while (_a->top != NULL) {
-		_a = _a->top;
+	while (root->top != NULL) {
+		root = root->top;
 	}
 
-	return _a;
+	return root;
 }
 
-data_node_t* SGDC_QP(bintree_rightest) (data_node_t* node) {
+data_node_t* SGDC_QP(bintree_node_rightest) (data_node_t* node) {
 	if (node == NULL)
 		return NULL;
 	data_node_t* rightest = node;
@@ -74,7 +75,7 @@ data_node_t* SGDC_QP(bintree_rightest) (data_node_t* node) {
 	return rightest;
 }
 
-data_node_t* SGDC_QP(bintree_leftest) (data_node_t* node) {
+data_node_t* SGDC_QP(bintree_node_leftest) (data_node_t* node) {
 	if (node == NULL)
 		return NULL;
 	data_node_t* leftest = node;
@@ -84,7 +85,7 @@ data_node_t* SGDC_QP(bintree_leftest) (data_node_t* node) {
 	return leftest;
 }
 
-void SGDC_QP(bintree_insright) (data_node_t* node, T insvalue) {
+void SGDC_QP(bintree_node_insright) (data_node_t* node, T insvalue) {
 	if (node == NULL)
 		return;
 	data_node_t* inspoint = rightest(node);
@@ -99,7 +100,7 @@ void SGDC_QP(bintree_insright) (data_node_t* node, T insvalue) {
 	return;
 }
 
-void SGDC_QP(bintree_insleft) (data_node_t* node, T insvalue) {
+void SGDC_QP(bintree_node_insleft) (data_node_t* node, T insvalue) {
 	if (node == NULL)
 		return;
 	data_node_t* inspoint = leftest(node);
@@ -114,17 +115,16 @@ void SGDC_QP(bintree_insleft) (data_node_t* node, T insvalue) {
 	return;
 }
 
-void SGDC_QP(bintree_free) (data_node_t* a) {
-    if (a == NULL) {
+void SGDC_QP(bintree_node_free) (data_node_t* node) {
+    if (node == NULL) {
         return;
     }
 
-    SGDC_QP(bintree_cut)  (a);
-    SGDC_QP(bintree_free) (a->left);
-    SGDC_QP(bintree_free) (a->right);
-
-    free(a);
-    return;
+	SGDC_QP(bintree_node_cut) (node);
+	SGDC_QP(bintree_node_free) (node->right);
+	SGDC_QP(bintree_node_free) (node->left);
+	free(node);
+	return;
 }
 
 #include "../default_type/default_type_end.h"
