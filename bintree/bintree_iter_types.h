@@ -10,7 +10,8 @@ typedef enum {
 
 typedef enum {
 	_SGDC_bintree_left_to_right,
-	_SGDC_bintree_right_to_left
+	_SGDC_bintree_right_to_left,
+	_SGDC_bintree_free
 } SGDC_bintree_iter_type;
 
 #endif /* _SGDC_BINTREE_ITER_TYPES_H */
