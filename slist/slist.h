@@ -17,13 +17,13 @@
 
 #include "slist_internal.h"
 
-typedef struct _SGDC_QP(slist) {
+typedef struct {
 	data_node_t* head;
 	data_node_t* last;
 	size_t size;
 } data_t;
 
-typedef struct _SGDC_QP(slist_iter) {
+typedef struct {
 	data_node_t* current;
 	data_t* head;
 } data_iter_t;
