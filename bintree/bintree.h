@@ -149,7 +149,7 @@ void SGDC_QP(bintree_it_ltr_gonext) (data_iter_directed_t* it) {
 				}
 				break;
 		} /* switch it->state */
-	} while (!stop)
+	} while (!stop);
 	
 	it->current = node;
 	it->state = state;
