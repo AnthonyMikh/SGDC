@@ -31,7 +31,7 @@ typedef struct {
 
 typedef struct {
 	data_node_t* current;
-} data_iter_t
+} data_iter_t;
 
 void SGDC_QP(bintree_create) (T init) {
 	data_t newtree;
