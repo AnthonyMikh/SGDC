@@ -1,5 +1,5 @@
 #ifndef SGDC_SIMPLE_DATATYPE
-	#define data_node_t SGDC_QP(bintree)
+	#define data_node_t SGDC_QP(bintree_node)
 #else
 	#ifdef _SGDC_BINTREE_NODE_H /* simple datatype enabled but header is included more than once*/
 	#error SGDC: cannot use SGDC_SIMPLE_DATATYPE on bintree more than once
