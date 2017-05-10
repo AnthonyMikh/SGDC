@@ -11,6 +11,7 @@
 #endif
 
 #include "../qualify_macros/qualify_macros.h"
+#include "bintree_node_types.h"
 
 #ifndef _MALLOC_H
 #include <malloc.h>
