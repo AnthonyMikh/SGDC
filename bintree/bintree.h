@@ -44,7 +44,7 @@ void SGDC_QP(bintree_free) (data_t tree) {
 	return;
 }
 
-data_iter_ltr_t SGDC_QP(bintree_it_makeltr) (data_t tree) {
+data_iter_directed_t SGDC_QP(bintree_it_makeltr) (data_t tree) {
 	data_iter_directed_t newiter;
 	newiter.current = tree.root;
 	newiter.type = _SGDC_bintree_ltr;
@@ -52,7 +52,7 @@ data_iter_ltr_t SGDC_QP(bintree_it_makeltr) (data_t tree) {
 	return newiter;
 }
 
-data_iter_rtl_t SGDC_QP(bintree_it_makertl) (data_t tree) {
+data_iter_directed_t SGDC_QP(bintree_it_makertl) (data_t tree) {
 	data_iter_directed_t newiter;
 	newiter.current = tree.root;
 	newiter.type = _SGDC_bintree_rtl;
