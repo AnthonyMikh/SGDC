@@ -11,8 +11,9 @@ Suppose you want to have binary tree holding `double`s. In order to do it, put `
 ```
 Now you're able to do things like this:
 ```C
-SGDC_bintree_double* mytree = SGDC_bintree_create_double(0.5d);
-SGDC_bintree_insertr_double(mytree, 0.888d);
+SGDC_bintree_double mytree = SGDC_bintree_create_double(0.5d);
+SGDC_bintree_iter_double myiter = SGDC_bintree_it_make_double(mytree);
+SGDC_bintree_it_insright_double(myiter, 0.888d);
 ```
 As you can see, T defines the type of data stucture. All SGDC functions begin with `SGDC_` and tailed by underscore followed by type name in order to escape name collisions.
 
@@ -44,7 +45,7 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
 * In case you find constant `SGDC_` too noisy, you can change it:
 
   ````C
-  #define SGDC_PREFIX S
+  #define SGDC_PREFIX S_
   #include "sgdc/bintree/bintree.h"
   ...
   /* now work with "S_bintree_create_int" */
@@ -76,7 +77,7 @@ As you can see, T defines the type of data stucture. All SGDC functions begin wi
   #define T char
   #include "sgdc/bintree/bintree.h"
   ...
-  SGDC_QP(bintree)* tree = SGDC_QP(bintree_create)('A');
+  SGDC_QP(bintree) tree = SGDC_QP(bintree_create)('A');
   ````
 
     You can type even less if you enable simple qualifiers:
