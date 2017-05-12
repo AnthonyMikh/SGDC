@@ -56,7 +56,7 @@ data_iter_directed_t SGDC_QP(bintree_it_makeltr) (data_t tree) {
 	data_iter_directed_t newiter;
 	newiter.current = SGDC_QP(bintree_node_leftest) (tree.root);
 	newiter.type = _SGDC_bintree_ltr;
-	newiter.state = _SGDC_bintree_to_left;
+	newiter.state = _SGDC_bintree_to_right;
 	return newiter;
 }
 
@@ -64,7 +64,7 @@ data_iter_directed_t SGDC_QP(bintree_it_makertl) (data_t tree) {
 	data_iter_directed_t newiter;
 	newiter.current = SGDC_QP(bintree_node_rightest) (tree.root);
 	newiter.type = _SGDC_bintree_rtl;
-	newiter.state = _SGDC_bintree_to_right;
+	newiter.state = _SGDC_bintree_to_left;
 	return newiter;
 }
 
