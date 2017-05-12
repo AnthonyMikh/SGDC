@@ -52,6 +52,21 @@ void SGDC_QP(bintree_free) (data_t tree) {
 	return;
 }
 
+data_iter_t SGDC_QP(bintree_it_make) (data_t tree) {
+	data_iter_t newiter;
+	newiter.current = tree.root;
+	return newiter;
+}
+
+data_iter_t SGDC_QP(bintree_it_makeend) (data_t tree) {
+    data_iter_t newiter;
+    if (tree.root == NULL)
+        newiter.current = NULL;
+    else
+        newiter.current = tree.root->top;
+    return newiter;
+}
+
 data_iter_directed_t SGDC_QP(bintree_it_makeltr) (data_t tree) {
 	data_iter_directed_t newiter;
 	newiter.current = SGDC_QP(bintree_node_leftest) (tree.root);
@@ -68,10 +83,8 @@ data_iter_directed_t SGDC_QP(bintree_it_makertl) (data_t tree) {
 	return newiter;
 }
 
-data_iter_t SGDC_QP(bintree_it_make) (data_t tree) {
-	data_iter_t newiter;
-	newiter.current = tree.root;
-	return newiter;
+bool SGDC_QP(bintree_it_reached) (data_iter_directed_t currit, data_iter_t endit) {
+    return currit.current == endit.current;
 }
 
 bool SGDC_QP(bintree_it_hasright) (data_iter_t it) {
