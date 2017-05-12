@@ -101,6 +101,14 @@ bool SGDC_QP(bintree_it_hasleft) (data_iter_t it) {
 		return false;
 }
 
+void SGDC_QP(bintree_it_insright) (data_iter_t it, T insvalue) {
+	SGDC_QP(bintree_node_insright) (it.current, insvalue);
+}
+
+void SGDC_QP(bintree_it_insleft) (data_iter_t it, T insvalue) {
+	SGDC_QP(bintree_node_insleft) (it.current, insvalue);
+}
+
 void SGDC_QP(bintree_it_goright) (data_iter_t* it) {
 	if (it == NULL || it->current == NULL || it->current->right == NULL)
 		return;
