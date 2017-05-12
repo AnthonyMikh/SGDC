@@ -11,7 +11,6 @@
 #endif
 
 #include "../qualify_macros/qualify_macros.h"
-#include "../default_type/default_type_begin.h"
 
 #ifndef _MALLOC_H
 #include <malloc.h>
@@ -23,5 +22,3 @@ typedef struct _SGDC_QP( __name__ ) {
 } data_node_t;
 
 /* code goes here */
-
-#include "../default_type/default_type_end.h"
