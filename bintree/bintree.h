@@ -74,6 +74,20 @@ data_iter_t SGDC_QP(bintree_it_make) (data_t tree) {
 	return newiter;
 }
 
+bool SGDC_QP(bintree_it_hasright) (data_iter_t it) {
+	if (it.current->right != NULL)
+		return true;
+	else
+		return false;
+}
+
+bool SGDC_QP(bintree_it_hasleft) (data_iter_t it) {
+	if (it.current->left != NULL)
+		return true;
+	else
+		return false;
+}
+
 void SGDC_QP(bintree_it_goright) (data_iter_t* it) {
 	if (it == NULL || it->current == NULL || it->current->right == NULL)
 		return;
