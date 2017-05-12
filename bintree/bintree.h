@@ -1,4 +1,3 @@
-
 #ifndef SGDC_SIMPLE_DATATYPE
 	#define data_t SGDC_QP(bintree)
 #else
@@ -84,10 +83,10 @@ void SGDC_QP(bintree_it_gonext) (data_iter_directed_t* it) {
 	if (it == NULL || it->current == NULL)
 		return;
 	switch (it->type) {
-		_SGDC_bintree_ltr:
+		case _SGDC_bintree_ltr:
 			SGDC_QP(bintree_it_ltr_gonext) (it);
 			break;
-		_SGDC_bintree_rtl:
+		case _SGDC_bintree_rtl:
 			/* SGDC_QP(bintree_it_rtl_gonext) -- not implemented yet*/
 			break;
 		default:
@@ -104,7 +103,7 @@ void SGDC_QP(bintree_it_ltr_gonext) (data_iter_directed_t* it) {
 	
 	do {
 		switch (it->state) {
-			_SGDC_bintree_to_left:
+			case _SGDC_bintree_to_left:
 				if (node->left == NULL) {
 					state = _SGDC_bintree_to_right;
 					stop = true;
@@ -112,20 +111,20 @@ void SGDC_QP(bintree_it_ltr_gonext) (data_iter_directed_t* it) {
 					node = node->left;
 				}
 				break;
-			_SGDC_bintree_to_right:
+			case _SGDC_bintree_to_right:
 				if (node->right != NULL) {
 					node = node->right;
 					state = _SGDC_bintree_to_left;
 				} else {
 					switch (SGDC_QP(bintree_node_type) (node)) {
-						_SGDC_bintree_node_root:
+						case _SGDC_bintree_node_root:
 							stop = true;
 							break;
-						_SGDC_bintree_node_right:
+						case _SGDC_bintree_node_right:
 							node = node->top;
 							state = _SGDC_bintree_from_right;
 							break;
-						_SGDC_bintree_node_left:
+						case _SGDC_bintree_node_left:
 							node = node->top;
 							state = _SGDC_bintree_to_right;
 							stop = true;
@@ -133,15 +132,15 @@ void SGDC_QP(bintree_it_ltr_gonext) (data_iter_directed_t* it) {
 					}
 				}
 				break;
-			_SGDC_bintree_from_right:
+			case _SGDC_bintree_from_right:
 				switch (SGDC_QP(bintree_node_type) (node)) {
-					_SGDC_bintree_node_root:
+					case _SGDC_bintree_node_root:
 						stop = true;
 						break;
-					_SGDC_bintree_node_right:
+					case _SGDC_bintree_node_right:
 						node = node->top;
 						break;
-					_SGDC_bintree_node_left:
+					case _SGDC_bintree_node_left:
 						node = node->top;
 						state = _SGDC_bintree_to_right;
 						stop = true;
