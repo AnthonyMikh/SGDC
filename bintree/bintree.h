@@ -38,6 +38,15 @@ void SGDC_QP(bintree_create) (T init) {
 	return newtree;
 }
 
+data_t SGDC_QP(bintree_combine) (data_t ltree, T value, data_t rtree) {
+	data_t newtree = SGDC_QP(bintree_create) (value);
+	newtree.root->left  = ltree.root;
+	newtree.root->left->top = newtree.root;
+	newtree.root->right = rtree.root;
+	newtree.root->right->top = rtree.root;
+	return newtree;
+}
+
 void SGDC_QP(bintree_free) (data_t tree) {
 	SGDC_QP(bintree_node_free) (tree.root);
 	return;
