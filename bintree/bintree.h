@@ -43,7 +43,7 @@ data_t SGDC_QP(bintree_combine) (data_t ltree, T value, data_t rtree) {
 	newtree.root->left  = ltree.root;
 	newtree.root->left->top = newtree.root;
 	newtree.root->right = rtree.root;
-	newtree.root->right->top = rtree.root;
+	newtree.root->right->top = newtree.root;
 	return newtree;
 }
 
