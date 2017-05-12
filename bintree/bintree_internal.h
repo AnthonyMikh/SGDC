@@ -70,7 +70,6 @@ data_node_t* SGDC_QP(bintree_node_create) (T init) {
 	return newnode;
 }
 
-/* it will be possibly removed */
 static void SGDC_QP(bintree_node_cut) (data_node_t* node) {
 	if (node == NULL) return;
 	if (node->top == NULL) return;
