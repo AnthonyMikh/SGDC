@@ -125,7 +125,7 @@ void SGDC_QP(bintree_it_ltr_gonext) (data_iter_directed_t* it) {
 	bool stop = false;
 	
 	do {
-		switch (it->state) {
+		switch (state) {
 			case _SGDC_bintree_to_left:
 				if (node->left == NULL) {
 					state = _SGDC_bintree_to_right;
