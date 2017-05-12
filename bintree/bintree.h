@@ -195,4 +195,70 @@ void SGDC_QP(bintree_it_ltr_gonext) (data_iter_directed_t* it) {
 	return;
 }
 
+void SGDC_QP(bintree_it_rtl_gonext) (data_iter_directed_t* it) {
+	if (it == NULL || it->current == NULL || it->type != _SGDC_bintree_rtl)
+		return;
+
+	data_node_t* node = it->current; SGDC_bintree_iter_state state = it->state;
+	bool stop = false;
+
+	do {
+		switch (state) {
+			case _SGDC_bintree_to_right:
+				if (node->right == NULL) {
+					state = _SGDC_bintree_to_left;
+					stop = true;
+				} else {
+					node = node->right;
+				}
+				break;
+			case _SGDC_bintree_to_left:
+				if (node->left != NULL) {
+					node = node->left;
+					state = _SGDC_bintree_to_right;
+				} else {
+					switch (SGDC_QP(bintree_node_type) (node)) {
+						case _SGDC_bintree_node_root:
+							stop = true;
+							break;
+						case _SGDC_bintree_node_right:
+							node = node->top;
+							state = _SGDC_bintree_to_left;
+							stop = true;
+							break;
+						case _SGDC_bintree_node_left:
+							node = node->top;
+							state = _SGDC_bintree_from_left;
+							break;
+					}
+				}
+				break;
+			case _SGDC_bintree_from_left:
+				switch (SGDC_QP(bintree_node_type) (node)) {
+					case _SGDC_bintree_node_root:
+						node = node->top;
+						stop = true;
+						break;
+					case _SGDC_bintree_node_right:
+						node = node->top;
+						state = _SGDC_bintree_to_left;
+						stop = true;
+						break;
+					case _SGDC_bintree_node_left:
+						node = node->top;
+						break;
+				}
+				break;
+            case _SGDC_bintree_from_right:
+                state = _SGDC_bintree_to_left;
+                stop = true;
+		} /* switch it->state */
+	} while (!stop);
+
+	it->current = node;
+	it->state = state;
+
+	return;
+}
+
 #include "../default_type/default_type_end.h"
