@@ -170,6 +170,9 @@ void SGDC_QP(bintree_it_ltr_gonext) (data_iter_directed_t* it) {
 						break;
 				}
 				break;
+			case _SGDC_bintree_from_left:
+				state = _SGDC_bintree_to_right;
+				stop = true;
 		} /* switch it->state */
 	} while (!stop);
 	
