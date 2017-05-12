@@ -77,9 +77,9 @@ static void SGDC_QP(bintree_node_cut) (data_node_t* node) {
 
 	data_node_t* supernode = node->top;
 	if (supernode->left == node) {
-		supernode->left == NULL;
+		supernode->left = NULL;
 	} else {
-		supernode->right == NULL;
+		supernode->right = NULL;
 	}
 
 	node->top = NULL;
