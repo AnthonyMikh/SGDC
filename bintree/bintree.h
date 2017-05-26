@@ -90,6 +90,11 @@ bool SGDC_QP(bintree_it_reached) (data_iter_directed_t currit, data_iter_t endit
 		return false;
 }
 
+bool SGDC_QP(bintree_it_notreached) (data_iter_directed_t currit, data_iter_t endit) {
+	return !SGDC_QP(bintree_it_reached) (currit, endit);
+}
+
+
 bool SGDC_QP(bintree_it_hasright) (data_iter_t it) {
 	if (it.current->right != NULL)
 		return true;
