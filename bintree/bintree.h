@@ -83,6 +83,15 @@ data_iter_directed_t SGDC_QP(bintree_it_makertl) (data_t tree) {
 	return newiter;
 }
 
+data_iter_t SGDC_QP(bintree_it_makeend) (data_t tree) {
+	data_iter_t newiter;
+	if (tree.root == NULL)
+		newiter.current = NULL;
+	else
+		newiter.current = tree.root->top;
+	return newiter;
+}
+
 bool SGDC_QP(bintree_it_reached) (data_iter_directed_t currit, data_iter_t endit) {
 	if (currit.current == endit.current)
 		return true;
