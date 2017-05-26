@@ -123,21 +123,6 @@ void SGDC_QP(bintree_it_goleft) (data_iter_t* it) {
 	return;
 }
 
-void SGDC_QP(bintree_it_gonext) (data_iter_directed_t* it) {
-	if (it == NULL || it->current == NULL)
-		return;
-	switch (it->type) {
-		case _SGDC_bintree_ltr:
-			SGDC_QP(bintree_it_ltr_gonext) (it);
-			break;
-		case _SGDC_bintree_rtl:
-			/* SGDC_QP(bintree_it_rtl_gonext) -- not implemented yet*/
-			break;
-		default:
-			break; /* TODO: return error on this case*/
-	}
-}
-
 void SGDC_QP(bintree_it_ltr_gonext) (data_iter_directed_t* it) {
 	if (it == NULL || it->current == NULL || it->type != _SGDC_bintree_ltr)
 		return;
@@ -268,6 +253,21 @@ void SGDC_QP(bintree_it_rtl_gonext) (data_iter_directed_t* it) {
 	it->state = state;
 
 	return;
+}
+
+void SGDC_QP(bintree_it_gonext) (data_iter_directed_t* it) {
+	if (it == NULL || it->current == NULL)
+		return;
+	switch (it->type) {
+		case _SGDC_bintree_ltr:
+			SGDC_QP(bintree_it_ltr_gonext) (it);
+			break;
+		case _SGDC_bintree_rtl:
+			SGDC_QP(bintree_it_rtl_gonext) (it);
+			break;
+		default:
+			break; /* TODO: return error on this case*/
+	}
 }
 
 #include "../default_type/default_type_end.h"
