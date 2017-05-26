@@ -179,6 +179,7 @@ void SGDC_QP(bintree_it_ltr_gonext) (data_iter_directed_t* it) {
 			case _SGDC_bintree_from_right:
 				switch (SGDC_QP(bintree_node_type) (node)) {
 					case _SGDC_bintree_node_root:
+						node = node->top;
 						stop = true;
 						break;
 					case _SGDC_bintree_node_right:
