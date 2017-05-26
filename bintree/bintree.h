@@ -84,7 +84,10 @@ data_iter_directed_t SGDC_QP(bintree_it_makertl) (data_t tree) {
 }
 
 bool SGDC_QP(bintree_it_reached) (data_iter_directed_t currit, data_iter_t endit) {
-    return currit.current == endit.current;
+	if (currit.current == endit.current)
+		return true;
+	else
+		return false;
 }
 
 bool SGDC_QP(bintree_it_hasright) (data_iter_t it) {
